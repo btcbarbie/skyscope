@@ -1,0 +1,282 @@
+/* ========================================
+   CSS CUSTOM PROPERTIES (Variables)
+   These define the colors for each theme.
+   The "default" is dark mode.
+   When we add class="light" to <body>,
+   the light-mode variables kick in.
+   ======================================== */
+:root {
+    /* Dark mode colors (default) */
+    --bg-gradient-1: #0f0c29;
+    --bg-gradient-2: #302b63;
+    --bg-gradient-3: #24243e;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --card-border: rgba(255, 255, 255, 0.15);
+    --stat-bg: rgba(255, 255, 255, 0.05);
+    --stat-border: rgba(255, 255, 255, 0.08);
+    --input-bg: rgba(255, 255, 255, 0.06);
+    --input-border: rgba(255, 255, 255, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-muted: #a0a0b0;
+    --text-label: #8888a0;
+    --placeholder: #6b6b80;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Light mode — activated when <body> has class="light" */
+body.light {
+    --bg-gradient-1: #e0e7ff;
+    --bg-gradient-2: #c7d2fe;
+    --bg-gradient-3: #ddd6fe;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --stat-bg: rgba(0, 0, 0, 0.04);
+    --stat-border: rgba(0, 0, 0, 0.08);
+    --input-bg: rgba(0, 0, 0, 0.04);
+    --input-border: rgba(0, 0, 0, 0.15);
+    --text-primary: #1e1b4b;
+    --text-secondary: #312e81;
+    --text-muted: #6366a0;
+    --text-label: #6b6b90;
+    --placeholder: #9ca3af;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-secondary);
+
+    /* Smooth transition when switching themes */
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ========================================
+   THEME TOGGLE BUTTON
+   Fixed in the top-right corner
+   ======================================== */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.4s;
+    z-index: 100;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+/* ========================================
+   MAIN CONTAINER — MADE BIGGER
+   max-width increased from 480px → 560px
+   padding increased from 40px → 48px
+   ======================================== */
+.container {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid var(--card-border);
+    padding: 48px;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: 0 8px 32px var(--shadow);
+    text-align: center;
+
+    /* Smooth transition for theme switching */
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    transition: color 0.4s;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    transition: color 0.4s;
+}
+
+/* ========================================
+   SEARCH BOX
+   ======================================== */
+.search-box {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.3s, background 0.4s, color 0.4s;
+}
+
+.search-box input:focus {
+    border-color: #7c5cfc;
+}
+
+.search-box input::placeholder {
+    color: var(--placeholder);
+}
+
+.search-box button {
+    padding: 14px 28px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #7c5cfc, #a855f7);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.search-box button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(124, 92, 252, 0.4);
+}
+
+/* ========================================
+   ERROR MESSAGE
+   ======================================== */
+.error-msg {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    min-height: 20px;
+    margin-bottom: 12px;
+}
+
+/* ========================================
+   WEATHER CARD
+   ======================================== */
+.weather-card {
+    background: var(--stat-bg);
+    border-radius: 18px;
+    padding: 28px;
+    border: 1px solid var(--stat-border);
+    animation: fadeInUp 0.4s ease-out;
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.weather-card h2 {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    transition: color 0.4s;
+}
+
+.weather-card .description {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-transform: capitalize;
+    margin-bottom: 24px;
+    transition: color 0.4s;
+}
+
+/* ========================================
+   STATS GRID
+   ======================================== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.stat {
+    background: var(--stat-bg);
+    border-radius: 14px;
+    padding: 20px 10px;
+    border: 1px solid var(--stat-border);
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-label);
+    margin-bottom: 8px;
+    transition: color 0.4s;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: color 0.4s;
+}
+
+/* ========================================
+   ANIMATION
+   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 580px) {
+    .container {
+        margin: 20px;
+        padding: 28px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}

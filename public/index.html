@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Tell the browser this page uses UTF-8 characters (supports all languages) -->
+    <meta charset="UTF-8">
+
+    <!-- Make the page responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title (shows in the browser tab) -->
+    <title>SkyScope — Weather Dashboard</title>
+
+    <!-- Link to our CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font: Inter — a clean, modern font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Theme toggle button — switches between dark and light mode -->
+    <button id="themeToggle" class="theme-toggle" title="Toggle light/dark mode">🌙</button>
+
+    <!-- Main container that centers everything on the page -->
+    <div class="container">
+
+        <!-- App title -->
+        <h1>🌤️ SkyScope</h1>
+        <p class="subtitle">Enter a city name to get the current weather</p>
+
+        <!-- Search form: input + button -->
+        <div class="search-box">
+            <!-- The text input where users type a city name -->
+            <!-- id="cityInput" lets our JavaScript find this element -->
+            <input type="text" id="cityInput" placeholder="e.g. London, Tokyo, Nairobi..." autocomplete="off">
+            <!-- The search button — id="searchBtn" lets JS attach a click listener -->
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <!-- Error message area — hidden by default, shown when something goes wrong -->
+        <p id="errorMsg" class="error-msg"></p>
+
+        <!-- Weather results card — hidden by default, shown after a successful search -->
+        <div id="weatherCard" class="weather-card hidden">
+            <h2 id="cityName"></h2>
+            <p id="weatherDesc" class="description"></p>
+
+            <!-- Grid of weather stats -->
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">🌡️ Temperature</span>
+                    <span id="temperature" class="stat-value"></span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">💧 Humidity</span>
+                    <span id="humidity" class="stat-value"></span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">💨 Wind Speed</span>
+                    <span id="windSpeed" class="stat-value"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to our JavaScript file — placed at the bottom so HTML loads first -->
+    <script src="script.js"></script>
+</body>
+
+</html>
