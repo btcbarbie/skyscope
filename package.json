@@ -1,7 +1,7 @@
 {
   "name": "skyscope",
   "version": "1.0.0",
-  "description": "",
+  "description": "Real-time weather dashboard built with Node.js, Express, and OpenWeather API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,8 +12,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
   },
   "engines": {
     "node": ">=18.0.0"
